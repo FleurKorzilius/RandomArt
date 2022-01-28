@@ -7,12 +7,14 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+install.packages("ggplot2")
 library(ggplot2)
 ```
 
 This is a demonstration of the Random Art package, that includes the make_art function. 
-The function make_art creates random art.
-It allows you to run it with an argument that sets the seed, or you can run it without any argument.
+The function make_art allows you to create beautifully random art.
+You can run make_art with an argument that sets the seed, to be able to recreate your beautiful art again.
+However, you can also run it without any argument and enjoy the fleeting beauty.
 
 ## Form of the function
 The function looks like this:
