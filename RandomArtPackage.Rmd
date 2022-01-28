@@ -1,0 +1,58 @@
+---
+title: "RandomArt Package"
+author: "Fleur Korzilius"
+date: "28-1-2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+```
+
+This is a demonstration of the Random Art package, that includes the make_art function. 
+The function make_art creates random art.
+It allows you to run it with an argument that sets the seed, or you can run it without any argument.
+
+## Form of the function
+The function looks like this:
+
+```{r make_art function, echo = TRUE, eval = TRUE}
+make_art <- function(seed = NA) {
+  if (!is.na(seed)) {
+    set.seed(seed)
+  }
+  x <- sample(1000)
+  y <- rnorm(100)
+  df_art <- data.frame(x,y)
+
+  art <- ggplot(df_art, aes(x, y)) +
+    geom_point(aes(color = y))
+  art + theme(axis.title = element_blank()) +
+    theme(legend.position = "none",
+          panel.background = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.ticks.y = element_blank()) +
+    stat_density_2d_filled(aes(fill = ..level..), geom="polygon")
+}
+```
+
+## Trying the make_art function
+
+First we will try the function without any arguments.
+
+```{r, echo=TRUE, eval = TRUE}
+make_art()
+```
+
+Now we will try the function by inputting different seeds.
+
+```{r, echo = TRUE, eval = TRUE}
+make_art(26)
+make_art(17)
+make_art(89)
+make_art(1260)
+```
+
+This was a demonstration of the Random Art package for R. 
